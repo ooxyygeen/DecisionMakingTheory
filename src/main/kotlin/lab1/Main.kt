@@ -1,11 +1,11 @@
 package lab1
 
-fun main(args: Array<String>) {
+fun main() {
     val row1 = listOf(63, 55, 90, 58, 30, 4, 71, 61, 33, 85, 89, 73, 4, 51, 5, 50, 68, 3, 85, 6)
     val row2 = listOf(95, 39, 49, 20, 67, 26, 63, 77, 96, 81, 65, 60, 36, 55, 70, 18, 11, 42, 32, 96)
     val row3 = listOf(79, 21, 70, 84, 72, 27, 34, 40, 83, 72, 98, 30, 63, 47, 50, 30, 73, 14, 59, 22)
-    val ira = listOf(72, 22, 54, 35, 21, 57, 65, 47, 71, 76, 69, 18, 1, 3, 53, 33, 7, 59, 28, 6)
-    val numbers = listOf(ira).flatten()
+    val total = listOf(row1, row2, row3).flatten()
+    val numbers = listOf(total).flatten()
 
     var optimals = find(numbers, ::compareByPareto)
     println("Множина оптимальних значень за Парето:")
@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
         }
     }
 
-    optimals = find(numbers, ::compareBySlater);
+    optimals = find(numbers, ::compareBySlater)
     println("\n\nМножина оптимальних значень за Слейтером:")
     for (o in optimals) {
         val index = findIndexesOfElement(numbers, o)
